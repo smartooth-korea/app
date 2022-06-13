@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+body {
+	background-image: url(/imgs/login/login_background.png);
+}
+
+
+.input-background{
+	background-image: url('/imgs/login/login_input_background.png');
+	border-radius:3px;
+	width: 510px;
+	height: 220px;
+}
+
+
+#userId{
+    background-image: url(/imgs/login/login_userId_ico.png);
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    border-radius:3px;
+    width: 460px; 
+    height: 73px;
+    margin: 10px;
+    border: 0 solid black;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+#userPwd{
+    background-image: url(/imgs/login/login_password_ico.png);
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    border-radius:3px;
+    width: 460px; 
+    height: 73px;
+    margin: 10px;
+    border: 0 solid black;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+#login_btn{
+	text-align: center; 
+	padding: 20px;
+  	font-size: 20px;
+  	color:#FFFFFF;
+/*   font-family: """; */
+/*   font-weight: 400; */
+/*   text-align: center; */
+/*   display: inline-block; */
+	width: 510px;
+	background-color: #60A3F7;
+	/*모서리 둥글게 처리*/
+	border-radius: 4px;
+	/*하이퍼링크 밑줄 없애기*/
+	text-align: center;
+}
+
+
+.login_btn:horver {
+	cursor: pointer;
+}
+

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@font-face { font-family: 'AppleSDGothicNeoM'; src: url(/fonts/AppleSDGothicNeoM.ttf) format('truetype'); }
+
+body{
+	background-color: #F2F2F2;
+	margin : 0px;
+	overflow-x: hidden;
+	font-family: AppleSDGothicNeoM;
+	
+}
