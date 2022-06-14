@@ -1,49 +1,38 @@
 spring:
- mvc:
-  view:
-   prefix: /WEB-INF/views/
-   suffix: .jsp
+    profiles :
+        active : test
+---
+spring:
+    mvc:
+        view:
+            prefix: /WEB-INF/views/
+            suffix: .jsp
+---
+spring:
+    #datasource (mariaDB)
+    datasource:
+        #Local Database
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        db-url: jdbc:log4jdbc:mariadb://localhost:3306/ST_1_0
+        db-username: smartooth
+        db-password: smartooth509#
+---
+spring:
+    server:
+        #LOCAL
+        ip: 192.168.0.31
+        port: 8080
 
-  jwt:
-    secretKey: tmakxntmzhfldk
-
-  datasource:
-    
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#    로컬 DB 연결
-    db-url: jdbc:log4jdbc:mariadb://localhost:3306/ST_1_0
-    
-#    심사용 서버 RDS 연결 (smartooth.system@gmail.com)
-#    db-url: jdbc:log4jdbc:mariadb://smartooth-mariadb.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
-    
-#    개발서버 RDS 연결
-#    db-url: jdbc:log4jdbc:mariadb://smartooth-database-dev.ciia9tposmmb.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
-    
-#    개발서버 RDS UTF-8
-#    db-url: jdbc:log4jdbc:mariadb://smartooth-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
-    
-    db-username: smartooth
-    db-password: smartooth509#
-    
-  server:
-    port: 8080
-#LOCAL
-    ip: 192.168.0.31
-#심사용 SERVER (smartooth.system@gmail.com)
-#    ip: 13.124.37.209
-#개발 SERVER (smartooth.test@gmail.com)
-#    ip: 43.200.64.17
-    
-
-
-  mailsendername: Smartooth Korea
-#메일 발송 부분은 로직은 동일, 메일 발송 HOST, ID, 비밀번호만 변경해주면 됨
-  mailusername: manager@smartooth.co
-  mailpassword: dkagh1505!@
+    #메일 발송 부분은 로직은 동일, 메일 발송 HOST, ID, 비밀번호만 변경해주면 됨
+    mailsendername: Smartooth Korea
+    mailusername: manager@smartooth.co
+    mailpassword: dkagh1505!@
   
 mybatis:
-  configuration:
-    map-underscore-to-camel-case: 'true'
-    
-    
-    
+    configuration:
+        map-underscore-to-camel-case: 'true'
+        
+---
+spring:
+    jwt:
+        secretKey: tmakxntmzhfldk

@@ -1,0 +1,30 @@
+spring:
+    profiles :
+        active : dev
+    mvc:
+        view:
+            prefix: /WEB-INF/views/
+            suffix: .jsp
+
+    jwt:
+        secretKey: tmakxntmzhfldk
+
+    datasource:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        #심사용 서버 RDS 연결 (smartooth.system@gmail.com)
+        db-url: jdbc:log4jdbc:mariadb://smartooth-mariadb.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
+        db-username: smartooth
+        db-password: smartooth509#
+    
+    server:
+        ip: 13.124.37.209
+        port: 8080
+
+    #메일 발송 부분은 로직은 동일, 메일 발송 HOST, ID, 비밀번호만 변경해주면 됨
+    mailsendername: Smartooth Korea
+    mailusername: manager@smartooth.co
+    mailpassword: dkagh1505!@
+  
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: 'true'
