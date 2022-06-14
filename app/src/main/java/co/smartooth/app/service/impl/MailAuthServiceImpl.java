@@ -129,7 +129,7 @@ public class MailAuthServiceImpl implements MailAuthService{
 		 * 회원가입 이메일 인증
 		 * */
 		StringBuffer sb = new StringBuffer();
-		sb.append("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>")
+			sb.append("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>")
 			.append("<html xmlns='http://www.w3.org/1999/xhtml'>")
 			.append("	<head>")
 			.append("		<meta http-equiv='Content-Type' content='text/html charset=utf-8' />")
@@ -140,21 +140,19 @@ public class MailAuthServiceImpl implements MailAuthService{
 			.append("			<td height='45' colspan='3' bgcolor='#FFFFFF'></td>")
 			.append("		</tr>")
 			.append("		<tr>")
-			.append("			<td width='5' height='25' bgcolor='#FFFFFF'></td>")
-			.append("			<td height='25' colspan='2' bgcolor='#FFFFFF'>")
-			.append("				<img src='https://www.smartooth.co/img/logo_origin.png' width='150px' height='70px' alt='smartooth' border='0' style='display: block'>")
+			.append("			<td height='25' colspan='2' bgcolor='#FFFFFF' align='center'>")
+			.append("				<img src='https://www.smartooth.co/img/logo_origin.png' width='200px' alt='smartooth' border='0' style='display:block;'>")
 			.append("			</td>")
 			.append("		</tr>")
 			.append("		<tr>")
-			.append("			<td colspan='2'>")
-			.append("			<br/><br/>")
+			.append("			<td colspan='2' align='center'>")
+			.append("			<br/>")
+			.append("				<h2 style='margin-top:15px; margin-bottom:10px; margin-left: px; font-size:18px; font-weight:lighter;'>Please click the link below to continue your membership registration.</h2>")
 			.append("				<div style='width: 100%;'>")
-			.append("					<div style='width: 700px; margin-left:25px;'>")
+			.append("					<div style='width:700px;'>")
 			.append("						<div>")
-			.append("							<p style='line-height: 20px; font-size: 16px; margin: 0px;'>Please click the link below to continue your membership registration.</p>")
 			.append("							<br/>")
 			.append("							<a href='http://")
-			
 			// API URL 설정 부분 // 아이디와 인증번호를 암호화 한 상태에서 메일을 발송
 			.append(serverInfo)
 			.append("/app/user/signUp/emailConfirm.do?userId=")
@@ -162,7 +160,7 @@ public class MailAuthServiceImpl implements MailAuthService{
 			.append("&authKey=")
 			.append(encAuthKey)
 			// API URL 설정 부분 ////////////////////////////////////////////////
-			.append("' style='background-color: #efff00;font-size: 14px;'>Click here to Sign-up</a>")
+			.append("' style='font-size: 20px; font-weight:bold;'>Click here to Sign-up</a>")
 			.append("						</div>")
 			.append("						<p style='line-height: 1.4em; font-weight:bold'></p>")
 			.append("						<p style='font-size: 11px; color:#636363'></p>")
@@ -178,8 +176,8 @@ public class MailAuthServiceImpl implements MailAuthService{
 			.append("		</tr>")
 			.append("	</body>")
 			.append("</html>");
-			
-		// text로만 보내고 싶을 경우 setText를 사용 (msg.setText(sb.toString());)
+
+			// text로만 보내고 싶을 경우 setText를 사용 (msg.setText(sb.toString());)
 		// html로 보내고 싶을 경우 setContents 사용
 		msg.setContent(sb.toString(), "text/html;charset=utf-8");
 		// Transport는 메일을 최종적으로 보내는 클래스로 메일을 전송			
@@ -249,17 +247,21 @@ public class MailAuthServiceImpl implements MailAuthService{
 			.append("			<td height='45' colspan='3' bgcolor='#FFFFFF'></td>")
 			.append("		</tr>")
 			.append("		<tr>")
-			.append("			<td width='5' height='25' bgcolor='#FFFFFF'></td>")
-			.append("			<td height='25' colspan='2' bgcolor='#FFFFFF'>")
-			.append("				<img src='https://www.smartooth.co/img/logo_origin.png' width='263px' height='122px' alt='smartooth' border='0' style='display: block'>")
+			.append("			<td height='25' colspan='2' bgcolor='#FFFFFF' align='center'>")
+			.append("				<img src='https://www.smartooth.co/img/logo_origin.png' width='200px' alt='smartooth' border='0' style='display:block;'>")
 			.append("			</td>")
 			.append("		</tr>")
 			.append("		<tr>")
-			.append("			<td colspan='2'>")
+			.append("			<td colspan='2' align='center'>")
 			.append("			<br/>")
-			.append("				<h2 style='margin-top:15px;margin-bottom: 10px;margin-left:25px;font-size:30px;font-weight: lighter;'>We’ve received a request to reset your password.<br/>You can reset your password using the link below.<br/>Please note, it will expire within 24 hours.</h2>")
+			.append("				<h2 style='margin-top:15px; margin-bottom:10px; margin-left: px; font-size:18px; font-weight:lighter;'>"
+					
+											+ "We’ve received a request to reset your password.<br/>"
+											+ "You can reset your password using the link below.<br/>"
+											+ "Please note, it will expire within 24 hours.</h2>")
+			
 			.append("				<div style='width: 100%;'>")
-			.append("					<div style='width: 700px; margin-left:25px;'>")
+			.append("					<div style='width:700px;'>")
 			.append("						<div>")
 			.append("							<br/>")
 			.append("							<a href='http://")
@@ -271,7 +273,7 @@ public class MailAuthServiceImpl implements MailAuthService{
 			.append("&emailAuthKey=")
 			.append(emailAuthKey)
 			// API URL 설정 부분 ////////////////////////////////////////////////
-			.append("' style='font-size: 25px; font-weight:bold;'>Click here to reset your password</a>")
+			.append("' style='font-size: 20px; font-weight:bold;'>Click here to reset your password</a>")
 			.append("						</div>")
 			.append("						<br/>")
 			.append("						<br/>")
@@ -279,10 +281,12 @@ public class MailAuthServiceImpl implements MailAuthService{
 			.append("						<p style='font-size: 11px; color:#636363'></p>")
 			.append("					</div>")
 			.append("				</div>")
-			.append("				<div style='font-size: 11px; color:#636363; background-color:#F4F4F4; line-height:1.3em; padding:20px 30px; margin-top:25px'>")
-			.append("					This e-mail is for outgoing only, it isn't possible to check it when making inquiries by E-mail.")
-			.append("					<br/>")
-			.append("					For other questions, please visit the website (<a href='http://smartooth.co/about_us' target='_blank'>www.smartooth.co)</a> <br/> Or Please contact us by email. <a href='mailto:﻿smartooth@smartooth.co'>smartooth@smartooth.co</a>")
+			.append("				<div style='font-size: 11px; color:#636363; background-color:#F4F4F4; line-height:1.3em; padding:20px 30px; margin-top:25px'>"
+					
+											+"This e-mail is for outgoing only, it isn't possible to check it when making inquiries by E-mail.<br/>"
+											+"For other questions, please visit the website (<a href='http://smartooth.co/about_us' target='_blank'>www.smartooth.co)</a><br/>"
+											+ "Or Please contact us by email. <a href='mailto:﻿smartooth@smartooth.co'>smartooth@smartooth.co</a>")
+			
 			.append("					<br/>")
 			.append("				</div>")
 			.append("			</td>")
