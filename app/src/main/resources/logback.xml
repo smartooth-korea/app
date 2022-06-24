@@ -3,7 +3,7 @@
  [Layout]
  %m : 로그내용이 출력
  %p : trace > debug > info > warn > error 등의 priority 출력
- 		ALL < DEBUG < INFO < WARN < ERROR < FATAL < OFF
+        ALL < DEBUG < INFO < WARN < ERROR < FATAL < OFF
  %r : 어플리케이션이 시작되어 로깅이벤트가 발생하는 시점까지의 경과시간을 밀리세컨드로 출력
  %c : 예) 카테고리가 a.b.c 처럼 되어있다면 %c{2}는 b.c가 출력됩니다.
  %n :  플랫폼 종속적인 개행문자가 출력된다. \r\n 또는 \n 일것이다
@@ -25,14 +25,10 @@
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 
-			
-			<!-- Local Log Location -->
-            <fileNamePattern>C:\logs\logback-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- Local Log Location -->
+<!--             <fileNamePattern>C:\logs\logback-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern> -->
             <!-- Server Log Location -->
-            <!-- <fileNamePattern>/home/ubuntu/logs/smartooth-log-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern> -->
-            
-            
-            
+            <fileNamePattern>/home/ubuntu/logs/smartooth-log-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 100MB -->
                 <maxFileSize>25MB</maxFileSize>
@@ -61,25 +57,27 @@
     <logger name="egovframework.*" level="ERROR">
     </logger>
     
-	<logger name="jdbc" level="INFO">
-	</logger>
-	
-	<logger name="jdbc.sqlonly" level="INFO" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-	
-	<logger name="jdbc.sqltiming" level="INFO" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-	
-	<logger name="jdbc.resultsettable" level="INFO" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-	
-	<root level="DEBUG">
-		<appender-ref ref="STDOUT" />
-	</root>
-
-
-
+    <logger name="jdbc" level="DEBUG">
+    </logger>
+    
+    <logger name="jdbc.sqlonly" level="DEBUG">
+    </logger>
+    
+    <logger name="jdbc.sqltiming" level="DEBUG">
+    </logger>
+    
+    <logger name="jdbc.resultsettable" level="DEBUG" additivity="false">  
+    </logger>
+    
+    <logger name="org.mybatis.spring" level="DEBUG">
+    </logger>
+    
+    <logger name="egovframework.sqlmappers" level="DEBUG">
+    </logger>
+    
+    
+    <root level="DEBUG">
+       <appender-ref ref="ROLLING"/>
+       <appender-ref ref="STDOUT" />
+    </root>
 </configuration>

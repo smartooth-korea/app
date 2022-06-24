@@ -97,6 +97,10 @@ public interface UserMapper {
 	public void updateUserPwd(UserVO userVO) throws Exception;
 	
 	
+	// 회원 목록 조회
+	public List<UserVO> selectUserList(UserVO userVO) throws Exception;
+	
+	
 	// 회원 삭제
 	public void deleteUser(String userId) throws Exception;
 	

@@ -212,6 +212,7 @@ public class MailAuthServiceImpl implements MailAuthService{
 		
 		// 서버 정보를 application.properties에서 호출하여 사용
 		String serverInfo = mailAuthInfo.getServerInfo();
+//		serverInfo = serverInfo.replaceAll("8080", "3000");
 		String senderId = mailAuthInfo.getUsername();
 		String sernderName = mailAuthInfo.getSenderName();
 		

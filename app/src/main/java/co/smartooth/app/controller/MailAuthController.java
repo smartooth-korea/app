@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -182,13 +183,14 @@ public class MailAuthController {
 		// 토큰 검증
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 		validation = jwtTokenUtil.validateToken(emailAuthKey);
+		request.setAttribute("userId", userId);
 		
 		if(validation) {
-			model.addAttribute("userId", userId);
+		    return "redirect:http://localhost:3000/app/user/resetUserPwd.jsp.do?userId="+userId;
 		}else {
 			return "/error/mailAuth_Error_500";
 		}
-	    return "/user/resetUserPwd";
+	    
 	  }
 	
 	

@@ -8,8 +8,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import co.smartooth.app.service.DeviceService;
 import co.smartooth.app.service.MailAuthService;
@@ -880,6 +883,7 @@ public class UserController {
 	 * 작성일 : 2022. 6. 9
 	 */
 	@PostMapping(value = {"/app/user/findUserPwd.do"})
+//	@GetMapping(value = {"/app/user/findUserPwd.do"})
 	@ResponseBody
 		public HashMap<String,Object> resetPassword(@RequestBody HashMap<String, String> paramMap) {
 
@@ -936,6 +940,7 @@ public class UserController {
 	 * 작성자 : 정주현 
 	 * 작성일 : 2022. 6. 9
 	 */
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping(value = {"/app/user/updateUserPwd.do"})
 	@ResponseBody
 	public HashMap<String,Object> updateUserPwd(@RequestBody HashMap<String, String> paramMap) {
@@ -1008,8 +1013,7 @@ public class UserController {
 		
 		
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-		boolean tmp = jwtTokenUtil.validateToken(userAuthToken);
-		
+//		boolean tmp = jwtTokenUtil.validateToken(userAuthToken);
 //		try {
 //			// 로그인 확인
 //			loginChkByIdPwd = authService.loginChkByIdPwd(authVO);
@@ -1038,6 +1042,45 @@ public class UserController {
 	}
 	
 	
+	
+	/**
+     * 기능   : 회원 목록 조회
+     * 작성자 : 정주현 
+     * 작성일 : 2022. 6. 24
+     */
+	
+	 @PostMapping(value = {"/app/user/selectUserList.do"})
+	 @ResponseBody
+     public HashMap<String, Object> selectUserList(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+
+	     String userId = (String)paramMap.get("userId");
+         //String userAuthToken = request.getHeader("Authorization");
+         //JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+         //boolean tmp = jwtTokenUtil.validateToken(userAuthToken);
+         
+	     HashMap<String, Object> hm = new HashMap<String, Object>();
+	     List<UserVO> userList = null;
+         UserVO userVO = new UserVO();
+         userVO.setUserId(userId);
+         
+         // 회원 목록 조회
+         // 누가 조회하냐에 따라서 값이 변하도록 변경해야함 (유치원)
+         try {
+             userList = userService.selectUserList(userVO);
+         }catch (Exception e) {
+             hm.put("code", "500");
+             hm.put("msg", "Server error");
+             e.printStackTrace();
+             
+         }
+         
+         hm.put("code", "000");
+         hm.put("msg", "Success");
+         hm.put("userList", userList);
+
+         return hm;
+
+	 }
 	
 	
 	

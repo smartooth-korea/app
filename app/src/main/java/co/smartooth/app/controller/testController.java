@@ -22,65 +22,70 @@ public class testController {
     
 	private final Logger LOGGER = (Logger) LoggerFactory.getLogger(MainController.class.getName());
 	
-	@RequestMapping(value = {"/test/register.do"})
+	@RequestMapping(value = {"/test/app/user/register.do"})
 	public String regist() {
 		return "/test/register";
 	}
 
-	@RequestMapping(value = {"/test/emailAuth.do"})
+	@RequestMapping(value = {"/test/app/user/emailAuth.do"})
 	public String emailAuth() {
 		return "/test/emailAuth";
 	}
 	
 	
-	@RequestMapping(value = {"/test/login.do"})
+	@RequestMapping(value = {"/test/app/user/login.do"})
 	public String login() {
 		return "/test/login";
 	}
 	
 	
-	@RequestMapping(value = {"/test/deviceInfo.do"})
+	@RequestMapping(value = {"/test/app/user/deviceInfo.do"})
 	public String device() {
 		return "/test/deviceInfo";
 	}
 	
-	@RequestMapping(value = {"/test/selectUserInfo.do"})
+	@RequestMapping(value = {"/test/app/user/selectUserInfo.do"})
 	public String selectUserInfo() {
 		return "/test/selectUserInfo";
 	}
+	
+	@RequestMapping(value = {"/test/app/user/selectUserList.do"})
+    public String selectUserList() {
+        return "/test/selectUserList";
+    }
+	
 
-	@RequestMapping(value = {"/test/selectUserTeethInfo.do"})
+	@RequestMapping(value = {"/test/app/user/selectUserTeethInfo.do"})
 	public String teethInfo() {
 		return "/test/selectUserTeethInfo";
 	}
 	
-	@RequestMapping(value = {"/test/selectUserTeethMeasureValue.do"})
+	@RequestMapping(value = {"/test/app/user/selectUserTeethMeasureValue.do"})
 	public String teethMeasureValue() {
 		return "/test/selectUserTeethMeasureValue";
 	}
 
-	@RequestMapping(value = {"/test/selectUserToothMeasureValue.do"})
+	@RequestMapping(value = {"/test/app/user/selectUserToothMeasureValue.do"})
 	public String selectUserToothMeasureValue() {
 		return "/test/selectUserToothMeasureValue";
 	}
  	
-	@RequestMapping(value = {"/test/deleteUser.do"})
+	@RequestMapping(value = {"/test/app/user/deleteUser.do"})
 	public String deleteUser() {
 		return "/test/deleteUser";
 	}
 	
-	@RequestMapping(value = {"/test/insertCalibrationInfoValue.do"})
+	@RequestMapping(value = {"/test/app/user/insertCalibrationInfoValue.do"})
 	public String insertCalibrationInfo() {
 		return "/test/insertCalibrationInfoValue";
 	}
 	
-	@RequestMapping(value = {"/test/findUserPwd.do"})
+	@RequestMapping(value = {"/test/app/user/findUserPwd.do"})
 	public String findUserPwd() {
-		LOGGER.info("안녕어어어엉");
 		return "/test/findUserPwd";
 	}
 	
-	@GetMapping(value = {"/test/react.do"})
+	@GetMapping(value = {"/test/app/user/react.do"})
 	@ResponseBody
 	public String reactDemo(){
 		return "Hello React";

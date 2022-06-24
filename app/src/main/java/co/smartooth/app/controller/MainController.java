@@ -16,7 +16,6 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String main() {
-		
 		Logger logger = LoggerFactory.getLogger(getClass());
 		logger.info("test", "hello log4");
 		logger.toString();

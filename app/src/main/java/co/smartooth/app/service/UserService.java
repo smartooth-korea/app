@@ -94,6 +94,9 @@ public interface UserService {
 	public void updateUserPwd(UserVO userVO) throws Exception;
 	
 	
+	// 회원 목록 조회
+	public List<UserVO> selectUserList(UserVO userVO) throws Exception;
+	
 	
 	
 	

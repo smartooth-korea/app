@@ -11,8 +11,8 @@ spring:
 
     datasource:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        #심사용 서버 RDS 연결 (smartooth.system@gmail.com)
-        db-url: jdbc:log4jdbc:mariadb://smartooth-mariadb.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
+        #개발용 서버 RDS 연결 (smartooth.test@gmail.com)
+        db-url: jdbc:log4jdbc:mariadb://smartooth-database-dev.ciia9tposmmb.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
         db-username: smartooth
         db-password: smartooth509#
     

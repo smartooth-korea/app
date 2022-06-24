@@ -153,7 +153,11 @@ public class UserServiceImpl implements UserService{
 		userMapper.updateUserPwd(userVO);
 	}
 	
-	
+	// 회원 목록 조회
+	@Override
+    public List<UserVO> selectUserList(UserVO userVO) throws Exception {
+	    return userMapper.selectUserList(userVO);
+    }
 	
 	
 	

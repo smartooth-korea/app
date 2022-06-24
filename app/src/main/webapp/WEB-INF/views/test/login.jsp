@@ -29,6 +29,6 @@ $(document).ready(function(){
 });
 </script>
 <body>
-		회원가입 >>> <input type="button" id="submit" value="버튼"/>
+		로그인 >>> <input type="button" id="submit" value="버튼"/>
 </body>
 </html>

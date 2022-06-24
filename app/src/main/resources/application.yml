@@ -11,17 +11,34 @@ spring:
 spring:
     #datasource (mariaDB)
     datasource:
-        #Local Database
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        db-url: jdbc:log4jdbc:mariadb://localhost:3306/ST_1_0
+        
+        #Local Database
+        #db-url: jdbc:log4jdbc:mariadb://localhost:3306/ST_1_0
+        
+        #Prod Database
+        db-url: jdbc:log4jdbc:mariadb://smartooth-mariadb.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
+        
+        #Dev Database
+        #db-url: jdbc:log4jdbc:mariadb://smartooth-database-dev.ciia9tposmmb.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
+        
         db-username: smartooth
         db-password: smartooth509#
 ---
 spring:
     server:
-        #LOCAL
-        ip: 192.168.0.31
+    
+        #Local
+        ip: localhost
         port: 8080
+        
+        #Prod
+        #ip: 13.124.37.209
+        #port: 8080
+        
+        #Dev
+        #ip: 13.124.37.209
+        #port: 8080
 
     #메일 발송 부분은 로직은 동일, 메일 발송 HOST, ID, 비밀번호만 변경해주면 됨
     mailsendername: Smartooth Korea
