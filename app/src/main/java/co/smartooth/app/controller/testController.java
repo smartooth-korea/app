@@ -90,7 +90,16 @@ public class testController {
 	public String reactDemo(){
 		return "Hello React";
 	}
-
+	
+	@GetMapping(value= {"/test/app/user/selectUserIsMeasuringValue.do"})
+	public String selectUserIsMeasuringValue(){
+	    return "/test/selectUserIsMeasuringValue";
+	}
+	
+	@GetMapping(value= {"/test/web/login"})
+    public String webLogin(){
+        return "/test/webLogin";
+    }
 	
 	
 }

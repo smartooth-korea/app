@@ -18,6 +18,7 @@ spring:
         
         #Prod Database
         db-url: jdbc:log4jdbc:mariadb://smartooth-mariadb.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
+        #db-url: jdbc:log4jdbc:mariadb://smartooth-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
         
         #Dev Database
         #db-url: jdbc:log4jdbc:mariadb://smartooth-database-dev.ciia9tposmmb.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
@@ -53,3 +54,7 @@ mybatis:
 spring:
     jwt:
         secretKey: tmakxntmzhfldk
+        
+---
+server:
+    port: 8080

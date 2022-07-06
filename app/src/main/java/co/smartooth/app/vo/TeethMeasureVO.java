@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class TeethMeasureVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	// 회원 이름 : 추가된 내용
+	private String userNm;
 	// 회원 번호
 	private String userNo;
 	// 회원 아이디
@@ -49,6 +51,21 @@ public class TeethMeasureVO implements Serializable {
 	private String t31;
 	private String t32;
 	
+	// 충치 상태에 따른 개수
+	// 일반 0~12 이하
+	private String cavityNormal;
+	// 경고 20이상
+    private String cavityWarning;
+    // 경계 30이상 - 충치
+    private String cavityCnt;
+	
+    
+    public String getUserNm() {
+        return userNm;
+    }
+    public void setUserNm(String userNm) {
+        this.userNm = userNm;
+    }
 	public String getUserNo() {
 		return userNo;
 	}
@@ -274,5 +291,23 @@ public class TeethMeasureVO implements Serializable {
 		this.measureDt = measureDt;
 	}
 	
+    public String getCavityCnt() {
+        return cavityCnt;
+    }
+    public void setCavityCnt(String cavityCnt) {
+        this.cavityCnt = cavityCnt;
+    }
+    public String getCavityNormal() {
+        return cavityNormal;
+    }
+    public void setCavityNormal(String cavityNormal) {
+        this.cavityNormal = cavityNormal;
+    }
+    public String getCavityWarning() {
+        return cavityWarning;
+    }
+    public void setCavityWarning(String cavityWarning) {
+        this.cavityWarning = cavityWarning;
+    }
 	
 }

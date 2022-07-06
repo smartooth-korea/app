@@ -147,5 +147,4 @@ public class LoginController {
 		}
 		return hm;
 	}
-	
 }

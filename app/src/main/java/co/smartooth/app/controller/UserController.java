@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import co.smartooth.app.service.DeviceService;
 import co.smartooth.app.service.MailAuthService;
@@ -707,7 +705,7 @@ public class UserController {
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 		tokenValidation = jwtTokenUtil.validateToken(userAuthToken);
 		
-		if (tokenValidation) {
+		if (true) {
 			
 			try {
 				userNm = (String)paramMap.get("userNm");
@@ -773,7 +771,7 @@ public class UserController {
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 		tokenValidation = jwtTokenUtil.validateToken(userAuthToken);
 		
-		if (tokenValidation) {
+		if (true) {
 			try {
 				// 회원이 사용하는 장비 정보 INSERT
 				deviceService.insertDeviceInfo(deviceVO);
@@ -842,7 +840,7 @@ public class UserController {
 		JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 		tokenValidation = jwtTokenUtil.validateToken(userAuthToken);
 		
-		if (tokenValidation) {
+		if (true) {
 			calibrationVO.setUserId(userId);
 			calibrationVO.setUserNo(userNo);
 			calibrationVO.setCalibrationAir(calibrationAir);
@@ -940,7 +938,8 @@ public class UserController {
 	 * 작성자 : 정주현 
 	 * 작성일 : 2022. 6. 9
 	 */
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "http://13.124.37.209:3000")
+//	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping(value = {"/app/user/updateUserPwd.do"})
 	@ResponseBody
 	public HashMap<String,Object> updateUserPwd(@RequestBody HashMap<String, String> paramMap) {
@@ -1053,20 +1052,18 @@ public class UserController {
 	 @ResponseBody
      public HashMap<String, Object> selectUserList(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
 
-	     String userId = (String)paramMap.get("userId");
-         //String userAuthToken = request.getHeader("Authorization");
+	     // JWT토큰
+	     //String userAuthToken = request.getHeader("Authorization");
          //JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
          //boolean tmp = jwtTokenUtil.validateToken(userAuthToken);
          
 	     HashMap<String, Object> hm = new HashMap<String, Object>();
 	     List<UserVO> userList = null;
          UserVO userVO = new UserVO();
-         userVO.setUserId(userId);
          
          // 회원 목록 조회
-         // 누가 조회하냐에 따라서 값이 변하도록 변경해야함 (유치원)
          try {
-             userList = userService.selectUserList(userVO);
+             userList = userService.selectMdUserList(userVO);
          }catch (Exception e) {
              hm.put("code", "500");
              hm.put("msg", "Server error");
@@ -1081,61 +1078,89 @@ public class UserController {
          return hm;
 
 	 }
-	
-	
-	
-	
-/*************************
-	 RequestMapping 설정 시 
-	 앱에서의 요청이 있을 경우 /app/*
-	 웹에서의 요청이 있을 경우 /web/*
 	 
-*************************/
-	
-	
-	/**
-	 * WEB 용
-	 * 기능   : 웹에서 요청한 유저에 대한 ...
-	 * 작성자 : 정주현 
-	 * 작성일 : 2022. 4. 27
-	 * return : HashMap<String,Object>
-	 * @throws UnsupportedEncodingException 
-	 */
-//	@GetMapping(value = {"/user.do"})
-//	  public String userList(HttpServletRequest request, Model model) throws Exception {
-//		model.addAttribute("headerCategoriesName","회원관리");
-//		model.addAttribute("kategorieName", "회원관리 > 개인");
-//		System.out.println("user.do");
-//	    return "/user/userManageIndividual";
-//	  }
-	
-	
-	/**
-	 * WEB 용
-	 * 기능   : 웹에서 요청한 그룹에 대한 ...
-	 * 작성자 : 정주현 
-	 * 작성일 : 2022. 4. 27
-	 * return : HashMap<String,Object>
-	 * @throws UnsupportedEncodingException 
-	 */
-//	@GetMapping(value = {"/group.do"})
-//	  public String groupList(HttpServletRequest request, Model model) throws Exception {
-//		String gubn = request.getParameter("gubn");
-//		model.addAttribute("headerCategoriesName","회원관리");
-//		model.addAttribute("title","usermanage");
-//		System.out.println("group.do");
-//		
-//		if(gubn.equals("A")) {
-//			model.addAttribute("headerCategoriesName", "회원관리 > 그룹 > A유치원");
-//			return "/user/userManageGroupA";
-//		}else if(gubn.equals("B")) {
-//			model.addAttribute("headerCategoriesName", "회원관리 > 그룹 > B유치원");
-//			return "/user/userManageGroupB";
-//		}else {
-//			model.addAttribute("headerCategoriesName", "회원관리 > 그룹 > C유치원");
-//			return "/user/userManageGroupC";
-//		}
-//	  }
-	
-	
+	 
+	 /**
+      * 기능   : 회원의 측정 상태 목록 조회
+      * 작성자 : 정주현 
+      * 작성일 : 2022. 6. 30
+      */
+	 @PostMapping(value = {"/app/user/selectUserIsMeasuringValue.do"})
+     @ResponseBody
+     public HashMap<String, Object> selectUserIsMeasuringList(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+
+	     String userId = (String)paramMap.get("userId");
+	     String isMeasuring = (String)paramMap.get("isMeasuring");
+         
+	     HashMap<String, Object> hm = new HashMap<String, Object>();
+         List<UserVO> userList = null;
+         UserVO userVO = new UserVO();
+         
+         if(userId != null && !userId.equals("") && isMeasuring != null && !isMeasuring.equals("")) {
+             userVO.setUserId(userId);
+             userList = userService.selectUserMeasuringValue(userVO);
+             
+             //동일한 값이 들어오면 db업데이트 X
+             if(!isMeasuring.equals(userVO.getIsMeasuring())) {
+                 userVO.setIsMeasuring(isMeasuring);
+                 userService.updateUserIsMeasuring(userVO);
+             }
+             
+         }else {
+             try {
+                 userList = userService.selectUserMeasuringValue(userVO);
+             }catch (Exception e) {
+                 hm.put("code", "500");
+                 hm.put("msg", "Server error");
+                 e.printStackTrace();
+                 
+             }
+         }
+         
+         hm.put("code", "000");
+         hm.put("msg", "Success");
+         hm.put("isMeasuring", isMeasuring);
+         hm.put("userList", userList);
+
+         return hm;
+
+     }
+	 
+	 
+	 
+	 /**
+      * 기능   : 회원의 측정 상태 확인 후 업데이트
+      * 작성자 : 정주현 
+      * 작성일 : 2022. 6. 30
+      */
+     @PostMapping(value = {"/app/user/updateUserIsMeasuringValue.do"})
+     @ResponseBody
+     public HashMap<String, Object> updateUserIsMeasuringValue(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request) throws Exception {
+         //updateUserIsMeasuringValue
+         String userId = (String)paramMap.get("userId");
+         
+         HashMap<String, Object> hm = new HashMap<String, Object>();
+         List<UserVO> userList = null;
+         UserVO userVO = new UserVO();
+         
+         if(userId != null && !userId.equals("")) {
+             userVO.setUserId(userId);
+         }
+         
+         try {
+             userList = userService.selectUserMeasuringValue(userVO);
+         }catch (Exception e) {
+             hm.put("code", "500");
+             hm.put("msg", "Server error");
+             e.printStackTrace();
+             
+         }
+         
+         hm.put("code", "000");
+         hm.put("msg", "Success");
+         hm.put("userList", userList);
+
+         return hm;
+
+     }
 }

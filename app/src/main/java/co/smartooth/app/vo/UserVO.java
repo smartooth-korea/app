@@ -25,11 +25,12 @@ public class UserVO implements Serializable {
 	private String userDeleteDt;
 	private String loginDt;
 	private String userEmailYn;
-	private String userAuthToken;
 	private int loginCk;
+	private String isMeasuring;
+	
 
 	
-	public int getSeqNo() {
+    public int getSeqNo() {
 		return seqNo;
 	}
 	public void setSeqNo(int seqNo) {
@@ -149,10 +150,10 @@ public class UserVO implements Serializable {
 	public void setLoginCk(int loginCk) {
 		this.loginCk = loginCk;
 	}
-	public String getUserAuthToken() {
-		return userAuthToken;
-	}
-	public void setUserAuthToken(String userAuthToken) {
-		this.userAuthToken = userAuthToken;
-	}
+	public String getIsMeasuring() {
+        return isMeasuring;
+    }
+    public void setIsMeasuring(String isMeasuring) {
+        this.isMeasuring = isMeasuring;
+    }
 }

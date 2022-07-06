@@ -153,18 +153,49 @@ public class UserServiceImpl implements UserService{
 		userMapper.updateUserPwd(userVO);
 	}
 	
+	
+
+    // 회원의 삭제
+    @Override
+    public void deleteUser(String userId) throws Exception {
+        userMapper.deleteUser(userId);
+    }
+    
+	
+    
+    
+    
+    
+    
+/**중학교 관련**/
 	// 회원 목록 조회
 	@Override
-    public List<UserVO> selectUserList(UserVO userVO) throws Exception {
-	    return userMapper.selectUserList(userVO);
+    public List<UserVO> selectMdUserList(UserVO userVO) throws Exception {
+	    return userMapper.selectMdUserList(userVO);
     }
 	
-	
-	
-	
-	// 회원의 삭제
-	@Override
-	public void deleteUser(String userId) throws Exception {
-		userMapper.deleteUser(userId);
-	}
+
+    @Override
+    public List<UserVO> selectUserMeasuringValue(UserVO userVO) throws Exception {
+        return userMapper.selectUserMeasuringValue(userVO);
+    }
+
+    
+    // 측정 상태 업데이트
+    @Override
+    public void updateUserIsMeasuring(UserVO userVO) throws Exception {
+        userMapper.updateUserIsMeasuring(userVO);
+    }
+    
+    
+    // 회원들의 치아 측정 값 조회(가장 최근)
+    @Override
+    public List<TeethMeasureVO> selectUserMeasureValueList(UserVO userVO) throws Exception {
+        return userMapper.selectUserMeasureValueList(userVO);
+    }
+
+    @Override
+    public String selectUserNm(String userId) throws Exception {
+        return userMapper.selectUserNm(userId);
+    }
 }

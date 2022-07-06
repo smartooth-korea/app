@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -160,7 +159,6 @@ public class MailAuthController {
 	}
 	
 	
-	
 	/**
 	 * 기능   : 비밀번호 초기화 전 메일 인증
 	 * 작성자 : 정주현 
@@ -187,12 +185,10 @@ public class MailAuthController {
 		
 		if(validation) {
 		    return "redirect:http://localhost:3000/app/user/resetUserPwd.jsp.do?userId="+userId;
+//		    return "redirect:http://13.124.37.209:3000/app/user/resetUserPwd.jsp.do?userId="+userId;
 		}else {
 			return "/error/mailAuth_Error_500";
 		}
-	    
 	  }
-	
-	
 	
 }

@@ -97,12 +97,24 @@ public interface UserMapper {
 	public void updateUserPwd(UserVO userVO) throws Exception;
 	
 	
-	// 회원 목록 조회
-	public List<UserVO> selectUserList(UserVO userVO) throws Exception;
-	
-	
 	// 회원 삭제
 	public void deleteUser(String userId) throws Exception;
 	
+	
+/**중학교 관련**/	
+	// 회원 목록 조회
+	public List<UserVO> selectMdUserList(UserVO userVO) throws Exception;
+	
+	
+	public List<UserVO> selectUserMeasuringValue(UserVO userVO) throws Exception;
+	
+	
+	public void updateUserIsMeasuring(UserVO userVO) throws Exception;
+	
+    // 회원들의 치아 측정 값 조회(가장 최근)
+    public List<TeethMeasureVO> selectUserMeasureValueList(UserVO userVO) throws Exception;
+    
+    // 회원 이름 조회
+    public String selectUserNm(String userId) throws Exception;
 	
 }
