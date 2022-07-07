@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
 	//	회원 등록 (회원가입)
 	@Override
 	public void insertUserInfo(UserVO userVO) throws Exception {
-		userMapper.insertUser(userVO);
+		userMapper.insertUserInfo(userVO);
 	}
 	
 	// 회원 정보 업데이트
@@ -154,7 +154,6 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	
-
     // 회원의 삭제
     @Override
     public void deleteUser(String userId) throws Exception {
@@ -162,40 +161,9 @@ public class UserServiceImpl implements UserService{
     }
     
 	
-    
-    
-    
-    
-    
-/**중학교 관련**/
-	// 회원 목록 조회
-	@Override
-    public List<UserVO> selectMdUserList(UserVO userVO) throws Exception {
-	    return userMapper.selectMdUserList(userVO);
-    }
-	
-
-    @Override
-    public List<UserVO> selectUserMeasuringValue(UserVO userVO) throws Exception {
-        return userMapper.selectUserMeasuringValue(userVO);
-    }
-
-    
-    // 측정 상태 업데이트
-    @Override
-    public void updateUserIsMeasuring(UserVO userVO) throws Exception {
-        userMapper.updateUserIsMeasuring(userVO);
-    }
-    
-    
-    // 회원들의 치아 측정 값 조회(가장 최근)
-    @Override
-    public List<TeethMeasureVO> selectUserMeasureValueList(UserVO userVO) throws Exception {
-        return userMapper.selectUserMeasureValueList(userVO);
-    }
-
     @Override
     public String selectUserNm(String userId) throws Exception {
         return userMapper.selectUserNm(userId);
     }
+    
 }

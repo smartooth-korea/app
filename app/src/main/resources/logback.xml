@@ -45,16 +45,16 @@
     </appender>
     
     <!-- Loggers -->
-    <logger name="org.apache.catalina" level="DEBUG">
+    <logger name="org.apache.catalina" level="ERROR">
     </logger>
     
-    <logger name="org.apache.commons" level="DEBUG">
+    <logger name="org.apache.commons" level="ERROR">
     </logger>
     
-    <logger name="org.springframework" level="DEBUG" >
+    <logger name="org.springframework" level="ERROR" >
     </logger>
     
-    <logger name="egovframework.*" level="DEBUG">
+    <logger name="egovframework.*" level="ERROR">
     </logger>
     
     <logger name="jdbc" level="DEBUG">

@@ -98,30 +98,6 @@ public interface UserService {
 	public void deleteUser(String userId) throws Exception;
 	
 	
-
-	
-	
-	
-/**중학교관련*/
-	
-	
-	// 중학교 회원 목록 조회
-	public List<UserVO> selectMdUserList(UserVO userVO) throws Exception;
-	
-	// 중학교 회원 목록 측정 상태 조회 
-	public List<UserVO> selectUserMeasuringValue(UserVO userVO) throws Exception;
-	
-	// 측정 상태 업데이트
-	public void updateUserIsMeasuring(UserVO userVO) throws Exception;
-	
-	// 회원들의 치아 측정 값 조회(가장 최근)
-	public List<TeethMeasureVO> selectUserMeasureValueList(UserVO userVO) throws Exception;
-	
 	// 회원 이름 조회
 	public String selectUserNm(String userId) throws Exception;
-	
-	
-	
-	
-	
 }

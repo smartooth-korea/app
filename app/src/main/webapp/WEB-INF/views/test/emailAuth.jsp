@@ -10,12 +10,14 @@
 $(document).ready(function(){
 	
 	$('#submit').click(function(){ 
+		var id = $("#email").val();
+		alert("id = "+id);
 		$.ajax({
 			type:'POST',   //post 방식으로 전송
-			url:'/test/emailAuth.do',   //데이터를 주고받을 파일 주소
+			url:'/app/user/signUp/emailAuth.do',   //데이터를 주고받을 파일 주소
 			data:JSON.stringify ({ //변수에 담긴 데이터를 전송해준다 (JSON 방식)
 
-				"userId" : "jungjuhyun12@gmail.com"
+				"userId" : id
 				
 			}),
 			dataType:'JSON', //데이터 타입 JSON
@@ -28,6 +30,9 @@ $(document).ready(function(){
 });
 </script>
 <body>
-		회원가입 인증메일 발송 >>> <input type="button" id="submit" value="버튼"/> 
+        
+		회원가입 인증메일 발송<br/>
+		<input type="text" id="email" name="email"/><br/>
+		<input type="button" id="submit" value="버튼"/> 
 </body>
 </html>

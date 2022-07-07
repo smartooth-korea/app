@@ -14,8 +14,8 @@ $(document).ready(function(){
 			url:'/app/user/register.do',   //데이터를 주고받을 파일 주소
 			data:JSON.stringify ({ //변수에 담긴 데이터를 전송해준다 (JSON 방식)
 				
-				"userId" : "test"
-				,"userPwd" : "1234"
+				"userId" : "dean880111@gmail.com"
+				,"userPwd" : "dkagh1505!@"
 				,"userNm" : "관리자"
 				,"userNickname" : "관리자"
 				,"userType" : "G"

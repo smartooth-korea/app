@@ -13,14 +13,13 @@ spring:
     datasource:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
         
-        #Local Database
+        #로컬 Local Database
         #db-url: jdbc:log4jdbc:mariadb://localhost:3306/ST_1_0
         
-        #Prod Database
+        #운영서버 Prod Database
         db-url: jdbc:log4jdbc:mariadb://smartooth-mariadb.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
-        #db-url: jdbc:log4jdbc:mariadb://smartooth-database.cdx8q9adtw2b.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
         
-        #Dev Database
+        #새발서버 Dev Database
         #db-url: jdbc:log4jdbc:mariadb://smartooth-database-dev.ciia9tposmmb.ap-northeast-2.rds.amazonaws.com:3306/ST_1_0
         
         db-username: smartooth
@@ -29,15 +28,15 @@ spring:
 spring:
     server:
     
-        #Local
-        ip: localhost
-        port: 8080
-        
-        #Prod
-        #ip: 13.124.37.209
+        #로컬 Local
+        #ip: localhost
         #port: 8080
         
-        #Dev
+        #운영 Prod
+        ip: 13.124.37.209
+        port: 8080
+        
+        #개발 Dev
         #ip: 13.124.37.209
         #port: 8080
 

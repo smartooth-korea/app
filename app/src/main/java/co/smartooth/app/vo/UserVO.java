@@ -26,7 +26,7 @@ public class UserVO implements Serializable {
 	private String loginDt;
 	private String userEmailYn;
 	private int loginCk;
-	private String isMeasuring;
+	private String userAuthToken;
 	
 
 	
@@ -150,10 +150,10 @@ public class UserVO implements Serializable {
 	public void setLoginCk(int loginCk) {
 		this.loginCk = loginCk;
 	}
-	public String getIsMeasuring() {
-        return isMeasuring;
+	public String getUserAuthToken() {
+        return userAuthToken;
     }
-    public void setIsMeasuring(String isMeasuring) {
-        this.isMeasuring = isMeasuring;
+    public void setUserAuthToken(String userAuthToken) {
+        this.userAuthToken = userAuthToken;
     }
 }

@@ -287,9 +287,6 @@
 		<if test="userId != null and userId != '' ">
 			AND USER_ID = #{userId}
    		 </if> 
-		<if test="userAuthToken != null and userAuthToken != '' ">
-			AND USER_AUTH_TOKEN = #{userAuthToken}
-   		 </if> 
     </select>
     
     
@@ -477,5 +474,4 @@
 		WHERE 1=1
 		AND USER_ID = #{userId}
 	</delete>
-
 </mapper>
